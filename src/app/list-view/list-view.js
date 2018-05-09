@@ -2,22 +2,39 @@
 
 var listView = (function(){
     
+    var markup, tmpl, checklists = [];
+
     /* Private method */
-    function renderView(){
+    function updateDto() {
+        checklists = store.getState().checklists;
+        tmpl.link("#myAppListView", {checklists: checklists});
+    }
+
+    function registerActionBtns() {
+        $("#myAppListView").on("click", ".deleteBtn", function(){
+            var dataItem = $.view(this).data;
+            console.log(dataItem);
+            store.dispatch(Object.assign({}, dataItem, {type: actions.DELETE}));
+        })
+    }
+
+    function render(){
         $.get("src/app/list-view/list-view.html", function(data, textStatus, XMLHttpRequest){
-            var markup = data;
-        
+
+            markup = data;
             /* Compile markup string as a named template */
-            var tmpl = $.templates(markup );
-        
+            tmpl = $.templates(markup);
             /* Render the named template */
-            $("#myApp").html(tmpl.render({listViewTmpl: "This is from JS module template"}));
+            //$("#myAppListView").html(tmpl.render({listViewTmpl: "This is from JS module template"}));
+
+            registerActionBtns();
         });
     }
 
     /* Public method */
     function init(){
-        renderView()
+        render();
+        store.subscribe(updateDto);
     }
 
     /* Exporting public methods : Revealing Modular Pattern passing entire public function declaration ( without () ) */

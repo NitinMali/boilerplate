@@ -6,7 +6,10 @@ var connect = require('gulp-connect');
 var htmlclean = require('gulp-htmlclean');
 var cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
+var autoprefixer = require('gulp-autoprefixer');
+var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
+var babel = require('gulp-babel');
 
 var paths = {
 	src: 'src/**/*',
@@ -37,6 +40,9 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
     gulp.src(paths.srcJS)
+    .pipe(babel({
+      presets: ['es2015']  // babel config object
+    }))
     .pipe(connect.reload())
 });
 
@@ -48,6 +54,7 @@ gulp.task('watch', function() {
     
 gulp.task('connect', function() {
     connect.server({
+        port: '3000',
         root: '.',
         livereload: true
     })

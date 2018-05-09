@@ -3,19 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Boilerplate</title>
-
-  <link rel="import" href="src/app/list-view/list-view.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="src/css/vendor/spacing.css" />
 </head>
 <body>
   
-  <div id="myApp"></div>
+  <div id="myApp">
+    <div id="myAppHeader"></div>
+    <div id="myAppAddNew"></div>
+    <div id="myAppListView"></div>
+  </div>
 
   <!-- =============== vendor javascript ================ -->
+  <script src="src/lib/redux.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.88/jsrender.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsviews/0.9.90/jsviews.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.0/underscore-min.js"></script>
 
   <!-- ================ our javascript ================== -->
+  <script src="src/redux/actions.js"></script>
+  <script src="src/redux/reducer.js"></script>
+  <script src="src/redux/store.js"></script>
+
+  <script src="src/app/header/header.js"></script>
+  <script src="src/app/add-new/add-new.js"></script>
   <script src="src/app/list-view/list-view.js"></script>
   <script src="src/app/app.js"></script>
 </body>
