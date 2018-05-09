@@ -1,5 +1,14 @@
 $(document).ready(function () {
     header.init();
-    addNew.init();
-    listView.init();
+
+    //page.base('/app');
+    page('/', function(){
+        listView.init();
+    });
+    
+    page('/new', function(){
+        addNew.init();
+    });
+
+    page();
 });

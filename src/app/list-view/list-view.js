@@ -7,11 +7,11 @@ var listView = (function(){
     /* Private method */
     function updateDto() {
         checklists = store.getState().checklists;
-        tmpl.link("#myAppListView", {checklists: checklists});
+        tmpl.link("#myApp", {checklists: checklists});
     }
 
     function registerActionBtns() {
-        $("#myAppListView").on("click", ".deleteBtn", function(){
+        $("#myApp").on("click", ".deleteBtn", function(){
             var dataItem = $.view(this).data;
             console.log(dataItem);
             store.dispatch(Object.assign({}, dataItem, {type: actions.DELETE}));
@@ -25,7 +25,7 @@ var listView = (function(){
             /* Compile markup string as a named template */
             tmpl = $.templates(markup);
             /* Render the named template */
-            //$("#myAppListView").html(tmpl.render({listViewTmpl: "This is from JS module template"}));
+            //$("#myApp").html(tmpl.render({listViewTmpl: "This is from JS module template"}));
 
             registerActionBtns();
         });
