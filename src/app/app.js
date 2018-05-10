@@ -1,13 +1,31 @@
 $(document).ready(function () {
+    //header module init
     header.init();
 
-    //page.base('/app');
+    //clear or rest main body 
+    function resetView() {
+        var promiseObj = $.Deferred();
+        $("#myApp").empty();
+        promiseObj.resolve();
+        return promiseObj.promise();
+    }
+
     page('/', function(){
-        listView.init();
+        $.when( resetView() ).then(function(){
+            listView.init();
+        });
     });
     
     page('/new', function(){
-        addNew.init();
+        $.when( resetView() ).then(function(){
+            addNew.init();
+        });
+    });
+
+    page('/list', function(){
+        $.when( resetView() ).then(function(){
+            listView.init();
+        });
     });
 
     page();

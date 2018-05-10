@@ -9,6 +9,7 @@ var header = function(){
     }
 
     function init() {
+        $("#myApp").html();
         render();
     }
 

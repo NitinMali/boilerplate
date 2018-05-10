@@ -12,9 +12,7 @@ var addNew = function(){
         $.get("src/app/add-new/add-new.html", function(data){
             markup = data;
             tmpl = $.templates(markup);
-            //$("#myApp").html(tmpl.render({})); 
             tmpl.link("#myApp", formData);
-
             addNewItem()
         })
     }

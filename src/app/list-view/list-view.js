@@ -7,7 +7,7 @@ var listView = (function(){
     /* Private method */
     function updateDto() {
         checklists = store.getState().checklists;
-        tmpl.link("#myApp", {checklists: checklists});
+        tmpl.link("#myAppList", {checklists: checklists});
     }
 
     function registerActionBtns() {
