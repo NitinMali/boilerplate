@@ -1,5 +1,4 @@
-var header = function(){
-    
+define("header", ["jquery", "js-render", "js-view"], function($){
     function render() {
         $.get("src/app/header/header.html", function(data){
             var markup = data;
@@ -16,4 +15,4 @@ var header = function(){
     return {
         init: init
     }
-}()
+})
